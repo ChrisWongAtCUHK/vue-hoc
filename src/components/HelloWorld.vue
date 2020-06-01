@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <Loading :show="show" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,10 +32,16 @@
 </template>
 
 <script>
+import Loading from './Loading'
+
 export default {
   name: 'HelloWorld',
+  components: { 
+    Loading
+  },
   props: {
-    msg: String
+    msg: String,
+    show: Boolean
   }
 }
 </script>

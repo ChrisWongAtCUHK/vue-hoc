@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App" show="show"/>
   </div>
 </template>
 
@@ -12,6 +12,17 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      show: true
+    }
+  },
+  mounted() {
+    // stop loading after 10s
+    window.setTimeout(() => {
+      this.show = false
+    }, 10000)
   }
 }
 </script>
