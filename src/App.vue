@@ -1,17 +1,31 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorldWithLoading msg="Welcome to Your Vue.js App" :show="show"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import { withLoading } from "./hocs/withLoading";
+
+const HelloWorldWithLoading = withLoading(HelloWorld);
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorldWithLoading
+  },
+  data() {
+    return {
+      show: true
+    }
+  },
+  mounted() {
+    // stop loading after 10s
+    window.setTimeout(() => {
+      this.show = false
+    }, 10000)
   }
 }
 </script>
